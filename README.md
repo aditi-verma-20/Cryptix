@@ -1,4 +1,4 @@
-##  Quick Start
+##  Start
 
 ```bash
 # 1. Install dependencies
@@ -7,7 +7,7 @@ pip install -r requirements.txt
 # 2. # Mockaroo key
 $env:MOCKAROO_API_KEY="your-mockaroo-key"
 
-#3 Anthropic key (for SAR narrative AI)
+#3 Groq key (for SAR narrative AI)
 $env:GROQ_API_KEY="sk-ant-your-actual-key-here"
 
 # 3. Seed demo data
