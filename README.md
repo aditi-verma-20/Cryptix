@@ -88,5 +88,5 @@ cryptix_sar/
 - RBI KYC Master Direction 2016
 
 ---
-
+This is a demo UI showing how the final project is expected to look.
 *Team CRYPTIX*
