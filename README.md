@@ -1,4 +1,4 @@
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 # 1. Install dependencies
@@ -19,72 +19,73 @@ streamlit run app.py
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
+
 
 cryptix_sar/
-├── app.py ← Streamlit front-end (all UI pages)
-├── risk_engine.py ← AML rules engine, scoring logic
-├── database.py ← SQLite back-end, a drop-in replacement for PostgreSQL
-├── seed_demo.py ← populate with 6 literal demo cases
+├── app.py           ← Streamlit frontend (all UI pages)
+├── risk_engine.py   ← AML rules engine + scoring logic
+├── database.py      ← SQLite backend (drop-in for PostgreSQL)
+├── seed_demo.py     ← Populates 6 realistic demo cases
 ├── requirements.txt
-└── cryptix_sar.db ← created automatically on first run
+└── cryptix_sar.db   ← Auto-created on first run
 ```
-Back end: Python (risk_engine.py)
-Database: SQLite (just change connection string for postgres)
 
-Functionality of the three-tier architecture
+**Stack:**
+- **Frontend:** Streamlit + Plotly
+- **Backend:** Python (risk_engine.py)
+- **Database:** SQLite (swap connection string for PostgreSQL)
+- **LLM:** Groq API (Llama 3.3 70B) for SAR narrative generation  
+- **Data Source:** Mockaroo API (synthetic financial data generation) 
+- **Charts:** Plotly (interactive)
 
-Frontend: Streamlit + Plotly
-Backend: Python (risk_engine.py)
-Database: SQLite (just change connection string for postgres)
+---
 
-Distribution of features 4 AML detection rules
+##  4 AML Detection Rules
 
-Rule    
-Trigger     
-Weight    
+| Rule | Trigger | Weight |
+|------|---------|--------|
+| **Dormant Activation** | Account inactive >90 days + high-value txn | 30/100 |
+| **Frequency Spike** | Today's txn count >5× historical avg | 25/100 |
+| **Profile Mismatch** | Transaction >3× monthly declared income | 25/100 |
+| **Near-Threshold Structuring** | ≥3 txns just below reporting limit in 7 days | 20/100 |
 
-Dormant Activation  
-Account inactive for more than 90 days and HVT  
-30 from 100 
+---
 
-Frequency Spike  
-More than five times today’s average transaction count for the last historical period    
-25 from 100  
+##  Risk Classification (Banking-Grade)
 
-Profile Mismatch  
-The transaction value is more than three times what is declared as monthly income.   
-25 from 100  
+| Score | Classification |
+|-------|---------------|
+| 80–100 | 🔴 **IMMEDIATE ACTION REQUIRED** |
+| 60–79  | 🟠 **ESCALATE FOR REVIEW** |
+| 40–59  | 🟡 **ENHANCED DUE DILIGENCE** |
+| 20–39  | 🟢 **STANDARD MONITORING** |
+| 0–19   | 🔵 **ROUTINE SURVEILLANCE** |
 
-Near-Threshold Structuring   
-More than three transactions just below the reporting limit (per the respective reporting organization) in seven or fewer days   
-20 from 100  
+---
 
-Risk Classification for Banking-Grade Customers
-Score                  Classification
-80-100                  🔴 Immediate Action Required
-60-79                     🟠 Escalate for Review and Consider
-40-59                     🟡 Additional Due Diligence Required   
-20-39                     🟢 Normal Monitoring
-0-19                            🔵 Routine Surveillance
+##  Features
 
-Features
-✅ Four AML detection rules with their associated weighting and scoring
-✅ Amalgamation of CLAUDE AI AI-generated SAR narrative using a five-section template 
-✅ A risk radar (interactive) plus breakdown bar chart 
-✅ All activities are logged in a complete audit trail in SQLite (and will include an integrity hash)
-✅ Allow human analysts to edit and approve/reject SARs
-✅ A dashboard with analytical data on ongoing cases, trends, etc.
-✅ A registry of cases with the ability to search and filter for case records
-✅ A data seeder for demonstration purposes
-✅ Dark theme for CRYPTIX UI 
-Regulatory Compliance
-PMLA 2002 (India)  
-FIU-IND regulations  
-FATF recommendation R.20, 
-RBI KYC Master Direction
+- Rule-based technology providing 4 anti-money laundering (AML) detection rules, each rule has a weighted risk score.
+- Anti-Money Laundering (AML) Llama AI SAR narrative generation using a 5-section process.
+- Interactive risk radar with a breakdown bar chart.
+- Audit trail of all SQLite activity with integrity hash enforced.
+- Human analyst editing workflow with a review and approve/reject process.
+- Case analytics and trends available via a single dashboard.
+- Case registry with search and filter capabilities.
+- Demo data generator for demo purposes.
+- Platform dark theme user interface (UI).
+
+---
+
+## Regulatory Alignment
+
+- PMLA 2002 (India)
+- FIU-IND reporting standards
+- FATF Recommendation R.20
+- RBI KYC Master Direction 2016
 
 ---
 
