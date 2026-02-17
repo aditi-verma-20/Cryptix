@@ -89,4 +89,5 @@ cryptix_sar/
 
 ---
 This is a demo UI showing how the final project is expected to look.
+
 *Team CRYPTIX*
