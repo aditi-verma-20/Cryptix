@@ -9,10 +9,13 @@
 # 1. Install dependencies
 pip install -r requirements.txt
 
-# 2. Set your Claude API key
-export ANTHROPIC_API_KEY=your_key_here
+# 2. # Mockaroo key
+$env:MOCKAROO_API_KEY="your-mockaroo-key"
 
-# 3. Seed demo data (optional but recommended for presentation)
+#3 Anthropic key (for SAR narrative AI)
+$env:GROQ_API_KEY="sk-ant-your-actual-key-here"
+
+# 3. Seed demo data
 python seed_demo.py
 
 # 4. Launch the app
