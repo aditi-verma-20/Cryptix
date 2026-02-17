@@ -45,12 +45,12 @@ cryptix_sar/
 
 ##  4 AML Detection Rules
 
-| Rule | Trigger | Weight |
-|------|---------|--------|
-| **Dormant Activation** | Account inactive >90 days + high-value txn | 30/100 |
-| **Frequency Spike** | Today's txn count >5× historical avg | 25/100 |
-| **Profile Mismatch** | Transaction >3× monthly declared income | 25/100 |
-| **Near-Threshold Structuring** | ≥3 txns just below reporting limit in 7 days | 20/100 |
+| Rule | Trigger | Weight | Formula |
+|------|---------|--------|---------|
+| **Dormant Activation** | Account inactive >90 days + high-value txn | 30/100 | dormancy_factor × 0.6 + amount_factor × 0.4 |
+| **Frequency Spike** | Today's txn count >5× historical avg | 25/100 | min((ratio / 20) × 100, 100) |
+| **Profile Mismatch** | Transaction >3× monthly declared income | 25/100 | min((income_ratio / 15) × 100, 100) |
+| **Near-Threshold Structuring** | ≥3 txns just below reporting limit in 7 days | 20/100 | min((count / 10) × 100, 100) |
 
 ---
 
